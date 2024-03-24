@@ -6,7 +6,7 @@ def wait_for_postgres(host, max_retries=5, delay_seconds=5):
   while retries < max_retries:
     try:
       result = subprocess.run(
-        ['pg_is_ready', '-h', host], check=True, capture_output=True, text=True
+        ['pg_isready', '-h', host], check=True, capture_output=True, text=True
       )
       if 'accepting connections ' in result.stdout:
         print('successfully connected to postgres')
